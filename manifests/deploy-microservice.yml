@@ -57,7 +57,7 @@ spec:
     rules:
         -   http:
                 paths:
-                    -   path: /ply(/|$)(.*)
+                    -   path: /ply-solo(/|$)(.*)
                         backend:
                             serviceName: ply-solo-microservice-service
                             servicePort: 30201
