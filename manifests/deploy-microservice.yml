@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: ply-microservice
+        app: ply-solo-microservice
         stack: frontend
         source: demo
-    name: ply-microservice
+    name: ply-solo-microservice
     namespace: microservices
 spec:
     replicas: 3
     selector:
         matchLabels:
-            run: ply-microservice
+            run: ply-solo-microservice
     template:
         metadata:
             labels:
-                app: ply-microservice
-                run: ply-microservice
+                app: ply-solo-microservice
+                run: ply-solo-microservice
                 source: demo
         spec:
             containers:
                 -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/ply-microservice
-                    name: ply-microservice
+                    name: ply-solo-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: ply-microservice-service
-    name: ply-microservice-service
+        app: ply-solo-microservice-service
+    name: ply-solo-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: ply-microservice
+        app: ply-solo-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -51,7 +51,7 @@ kind: Ingress
 metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: ply-ingress
+    name: ply-solo-ingress
     namespace: microservices
 spec:
     rules:
@@ -59,7 +59,7 @@ spec:
                 paths:
                     -   path: /ply(/|$)(.*)
                         backend:
-                            serviceName: ply-microservice-service
+                            serviceName: ply-solo-microservice-service
                             servicePort: 30201
 
 
