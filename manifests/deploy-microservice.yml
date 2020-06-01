@@ -20,7 +20,7 @@ spec:
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/ply-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/ply-solo-microservice
                     name: ply-solo-microservice
                     ports:
                         -   name: web
