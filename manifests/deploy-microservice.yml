@@ -41,7 +41,7 @@ spec:
     ports:
         -   name: web
             protocol: TCP
-            port: 30300
+            port: 30201
             targetPort: 8080
 
 ---
@@ -60,6 +60,6 @@ spec:
                     -   path: /ply-solo(/|$)(.*)
                         backend:
                             serviceName: ply-solo-microservice-service
-                            servicePort: 30300
+                            servicePort: 30201
 
 
